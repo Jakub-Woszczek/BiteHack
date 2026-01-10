@@ -1,5 +1,6 @@
 .product-page {
   display: flex;
+  flex-direction: column;
   gap: 40px;
   padding: 40px;
   max-width: 1000px;
@@ -79,4 +80,39 @@ button {
 
 .add-to-favorites:hover {
   background-color: #ddd;
+}
+.star-rating .star {
+  color: lightgray;
+  font-size: 30px;
+}
+
+.star-rating .star.filled {
+  color: gold;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.comments-section {
+  margin-top: 40px;
+    z-index: 2;
+}
+
+.comments-section textarea {
+  width: 100%;
+  min-height: 80px;
+  margin-bottom: 10px;
+}
+
+.comment {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+.product-section {
+  display: flex;
+  flex-direction: row;
 }
