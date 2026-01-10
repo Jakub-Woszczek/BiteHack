@@ -3,6 +3,7 @@ package com.example.webshop.entities;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,6 +23,9 @@ public class Order {
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;
+
+    @Column(name = "order_date_time")
+    private LocalDateTime orderDateTime;
 
     public Order() {
     }
