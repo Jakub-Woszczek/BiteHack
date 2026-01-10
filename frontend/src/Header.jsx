@@ -1,33 +1,26 @@
 import React from 'react';
 import './Header.css';
 import { FiSearch, FiUser, FiHeart, FiShoppingBag } from 'react-icons/fi';
-// WAŻNE: Importujemy Link
 import { Link } from 'react-router-dom';
 
-const Header = () => {
+// Dodajemy prop 'user'
+const Header = ({ cartCount, wishlistCount, user }) => {
   const menuItems = [
-    // Dodałem pole 'path', żebyś wiedział gdzie dany link prowadzi
-    // { id: 1, label: 'TITLE_1 (Special)', path: '/kategoria/title-1', isSpecial: true },
     { id: 1, label: 'Sklep', path: '/shop', isSpecial: true },
     { id: 2, label: 'Rezerwacje', path: '/kategoria/title-2' },
     { id: 3, label: 'O nas', path: '/kategoria/title-3' },
-    // { id: 4, label: 'TITLE_4', path: '/kategoria/title-4' },
-    
   ];
 
   return (
     <header className="navbar">
       <div className="navbar-left">
-        {/* Kliknięcie w LOGO wraca na stronę główną ("/") */}
         <Link to="/" className="logo" style={{ textDecoration: 'none', color: 'black' }}>
           LOGO_FIRMY
         </Link>
-        
         <nav>
           <ul className="nav-links">
             {menuItems.map((item) => (
               <li key={item.id}>
-                {/* ZAMIENIAMY <a> na <Link> */}
                 <Link 
                   to={item.path} 
                   className={item.isSpecial ? 'link-special' : 'link-regular'}
@@ -47,14 +40,30 @@ const Header = () => {
         </div>
 
         <div className="user-actions">
-          <FiUser className="icon" />
-          <FiHeart className="icon" />
+          
+          {/* --- IKONA UŻYTKOWNIKA (LOGIKA) --- */}
           <div className="icon-wrapper">
-             {/* Ikona koszyka też może być linkiem */}
+            {/* Jeśli user istnieje -> idź do profilu, jeśli nie -> idź do logowania */}
+            <Link to={user ? "/profil" : "/logowanie"}>
+              <FiUser className="icon" />
+            </Link>
+            
+            {/* Jeśli user jest zalogowany -> pokaż zieloną kropkę "Online" */}
+            {user && <span className="badge-online"></span>}
+          </div>
+
+          <div className="icon-wrapper">
+             <Link to="/ulubione">
+               <FiHeart className="icon" />
+             </Link>
+             {wishlistCount > 0 && <span className="badge">{wishlistCount}</span>}
+          </div>
+
+          <div className="icon-wrapper">
             <Link to="/koszyk">
                 <FiShoppingBag className="icon" />
             </Link>
-            <span className="badge">0</span>
+            {cartCount > 0 && <span className="badge">{cartCount}</span>}
           </div>
         </div>
       </div>

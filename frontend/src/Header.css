@@ -96,3 +96,15 @@
   justify-content: center;
   align-items: center;
 }
+
+/* Kropka online dla użytkownika */
+.badge-online {
+  position: absolute;
+  bottom: -2px; /* Na dole ikony */
+  right: -2px;
+  background-color: #00c851; /* Soczysta zieleń */
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid white; /* Biała obwódka żeby się odcinało */
+}
