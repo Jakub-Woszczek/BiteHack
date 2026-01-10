@@ -24,11 +24,16 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding: 0;
+  /* Te dwie linie poniżej są najważniejsze - one usuwają centrowanie */
+  display: block; 
+  place-items: unset; 
+  
   min-width: 320px;
   min-height: 100vh;
+  background-color: #ffffff; /* Białe tło */
 }
+
 
 h1 {
   font-size: 3.2em;
@@ -52,6 +57,15 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  /* Upewniamy się, że kontener też nie ma dziwnych marginesów */
+  width: 100%;
 }
 
 @media (prefers-color-scheme: light) {
