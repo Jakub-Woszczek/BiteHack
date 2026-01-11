@@ -8,8 +8,8 @@ import { useRef } from "react";
 const Header = ({ cartCount, wishlistCount, user, setSearchTerm }) => {
   const menuItems = [
     { id: 1, label: 'Sklep', path: '/shop', isSpecial: true },
-    { id: 2, label: 'Rezerwacje', path: '/kategoria/title-2' },
-    { id: 3, label: 'O nas', path: '/kategoria/title-3' },
+    // Zmieniono Rezerwacje na Kontakt, usunięto O nas
+    { id: 2, label: 'Kontakt', path: '/kontakt', isSpecial: false },
   ];
 
   const handleSearch = () => {
@@ -45,14 +45,14 @@ const Header = ({ cartCount, wishlistCount, user, setSearchTerm }) => {
       <div className="navbar-right">
         <div className="search-bar">
           <input 
-          type="text" 
-          placeholder="Szukaj..."
-          ref={inputRef}
+            type="text" 
+            placeholder="Szukaj..."
+            ref={inputRef}
           />
           <FiSearch 
-          className="search-icon"
-          onClick={handleSearch}
- />
+            className="search-icon"
+            onClick={handleSearch}
+          />
         </div>
 
         <div className="user-actions">

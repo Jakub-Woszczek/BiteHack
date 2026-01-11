@@ -8,6 +8,7 @@ import CartPage from './CartPage';
 import WishlistPage from './WishlistPage';
 import LoginPage from './LoginPage';
 import ProfilePage from './ProfilePage';
+import ContactPage from './ContactPage'; // <--- NOWY IMPORT
 import productImg from "./assets/product.png"; 
 import GeminiChat from "./GeminiChat.jsx"
 
@@ -89,11 +90,9 @@ function App() {
       const existingItem = prevItems.find(item => Number(item.id) === productId);
       
       if (existingItem) {
-        // Zabezpieczenie na poziomie App (opcjonalne, ale dobre)
+        // Zabezpieczenie na poziomie App
         const newQuantity = existingItem.quantity + quantityToAdd;
         if (newQuantity > 10) {
-            // Możemy tutaj zwrócić return prevItems, ale lepiej obsłużyć to w ProductPage
-            // Tutaj po prostu ucinamy do 10 jeśli ktoś obejdzie UI
             return prevItems.map(item => 
                 Number(item.id) === productId 
                   ? { ...item, quantity: 10 } 
@@ -189,6 +188,9 @@ function App() {
             />
           } 
         />
+
+        {/* --- NOWA ŚCIEŻKA KONTAKT --- */}
+        <Route path="/kontakt" element={<ContactPage />} />
 
         <Route 
           path="/logowanie" 
